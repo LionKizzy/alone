@@ -1,0 +1,25 @@
+pipeline {
+  agent any   // run on any available agent
+  stages {
+    stage('Build') {
+      steps {
+        echo "Building..."
+        // Example: for Node.js
+        sh 'npm install'         // (use `bat` on Windows)
+        sh 'npm run build'
+      }
+    }
+    stage('Test') {
+      steps {
+        echo "Running tests..."
+        sh 'npm test'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        echo "Deploying..."
+        // placeholder: e.g. scp, kubectl, or copy to staging
+      }
+    }
+  }
+}
